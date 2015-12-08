@@ -1,0 +1,101 @@
+<html>
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS References -->
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Scripts -->
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  </head>
+
+  <body>
+    <!-- Navigation Bar-->
+    <title>HOPPA</title>
+    <div class="cover">
+      <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a class="btn btn-lg btn-default" href="register">Become a Hopper!</a>
+              </li>
+              <li>
+                <a class="btn btn-lg btn-default" href="feedback">Feedback</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Index Content -->
+
+      <div class="cover-image"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h1>Welcome to Hoppa</h1>
+            <p>Learn. Share. Contribute</p>
+            <br>
+            <br>
+          </div>
+          <div class="col-md-6">
+            <form role="form" name="LoginCredentials" action="" method="POST">
+              <div class="form-group">
+                <label class="control-label" for="UserEmail">Email address</label>
+                <input class="form-control" id="UserEmail" placeholder="Enter email" type="text" name="useremail" value="{{ request.form.useremail }}">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="UserPassword">Password</label>
+                <input class="form-control" id="UserPassword" placeholder="Password" type="password" name="password" value="{{ request.form.password }}">
+              </div>
+              <button type="submit" class="btn btn-warning" value="Login">Log In</button>
+              <a href="recovery">Forgot your password?</a>
+            </form>
+            {% if error %}
+              <p class="error"> {{ error }} </p>
+            {% endif %}
+
+            {% for message in get_flashed_messages() %}
+              {{ message }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>About Us</h1>
+            <p>Hoppa is a web plataform to connect with college friends from around the
+              world.
+              <br>Developed by the University of Puerto Rico Mayaguez Campus ICOM5016 Students.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+
+</body></html>

@@ -1,0 +1,53 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    {{ message }}
+  {% endfor %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h1 class="text-warning">My Groups</h1>
+            <a class="btn btn-primary" href="addgroup">+Add Group</a>
+
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Math</a>
+              </li>
+              <li>
+                <a href="#">Science</a>
+              </li>
+              <li>
+                <a href="#">Arts</a>
+              </li>
+                <li>
+                <a href="#">Sports</a>
+              </li>
+              <li>
+                <a href="#">Business and Management</a>
+              </li>
+              <li>
+                <a href="#">Technology</a>
+              </li>
+            </ul>
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Group Name</th> 
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in group_data %}
+                <tr>
+                  <td><a href="group/{{ row['group_id'] }}">{{ row['group_name'] }}</a></td>
+                </tr>
+             {% endfor %}
+              </tbody>
+            </table>
+            <ul class="nav nav-pills"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

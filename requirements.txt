@@ -1,0 +1,14 @@
+Flask == 0.10.1
+Flask_Mail == 0.9.1
+itsdangerous == 0.24
+PyMySQL == 0.6.7
+Werkzeug == 0.11.2
+flask_sockets == 0.1
+gevent == 1.1rc1
+redis == 2.10.5
+virtualenv==13.1.2
+python_bcrypt == 0.3.1
+DateTime==4.0.1
+Jinja2==2.8
+Flask-Triangle==0.5.4
+Flask-SocketIO==1.1

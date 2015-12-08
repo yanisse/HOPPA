@@ -1,0 +1,116 @@
+{% extends "/base_templates/form_base.html" %}
+{% block content %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-horizontal" role="form" name="SignUpCredentials" method="POST">
+              <div>
+                <h1>
+                  Join the Hoppa family!
+                </h1>
+              </div>
+              {% if error %}
+                <p class="error"> {{ error }} </p>
+              {% endif %}
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="UserFName" placeholder="First Name *"
+                  name="fname" value="{{ request.form.fname }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="UserMName" placeholder="Middle Name" value="{{ request.form.mname }}"
+                  name="mname">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="UserLName" placeholder="Last Name *"
+                  name="lname" value="{{ request.form.lname }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="BirthDate" placeholder="Birthdate *" name="user_bdate" value="{{ request.form.user_bdate }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="tel" class="form-control" id="phone" placeholder="Phone Number (Without Dashes)" value="{{ request.form.user_phone }}" name="user_phone">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="Street" value="{{ request.form.street }}" placeholder="Street"
+                  name="street">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" id="City" value="{{ request.form.city }}" name="city" class="form-control" placeholder="City">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="State" value="{{ request.form.state}}" placeholder="State"
+                  name="state">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" id="Country" name="country" class="form-control" value="{{ request.form.country }}" placeholder="Country">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="text" id="ZipCode" name="zipcode" class="form-control" value="{{ request.form.zipcode }}" placeholder="Zip Code">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <select name="user_type" value="{{ request.form.user_type }}">
+                    <option value="regularuser">Regular User</option>
+                    <option value="businessuser">Business User</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="email" id="NewUserEmail" name="email" class="form-control"
+                  placeholder="Email *" value="{{ request.form.email }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="email" id="UserEmail_c" name="email_c" class="form-control"
+                  placeholder="Confirm Email *" value="{{ request.form.email_c }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="password" id="UserPassword" name="password" class="form-control" value="{{ request.form.password }}"
+                  placeholder="Password *">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="password" id="UserPassword_c" name="password_c" class="form-control" value="{{ request.form.password_c }}"
+                  placeholder="Confirm Password *">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <p class="text-right text-warning">* indicates required fields</p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-warning">Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

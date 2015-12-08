@@ -1,0 +1,72 @@
+<html>
+<head>
+
+    <!-- Meta Data -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS References -->
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+    <title>HOPPA</title>
+
+  </head>
+
+  <body>
+    <!-- Navigation Bar-->
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="login">Home</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block content -->
+    <div class="section">
+      <div class="container">
+        {% for message in get_flashed_messages() %}
+              {{ message }}
+        {% endfor %}
+        
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+     <footer class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>Hoppa</h1>
+            <p>Learn. Share. Contribute</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

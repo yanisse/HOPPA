@@ -1,0 +1,101 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}   
+  {% if message %}
+    <p class="error"> {{ message }} </p>
+  {% endif %}
+  <form role="form" method='POST'>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <h3> People </h3>
+            <ul class="media-list">
+              {% if friends_results %}
+                {% for row in friends_results %}
+                  {% if row %}
+                    <li class="media">
+                      <a class="pull-left" href="../myfriend/{{ row['friendid'] }}">
+                        <img class="media-object" src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" height="64" width="64">
+                      </a>
+                      <div class="media-body">
+                        <table>
+                          <tr>
+                            <td>
+                              <h4 class="media-heading">{{ row['userfirst'] + " " + row['usermiddle'] + " " + row['userlast'] }}</h4>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <button type="submit" name="results" value="addbutton_{{ row['friendid'] }}" class="btn btn-default">Add Friend</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+
+              <h3> Groups </h3>
+              {% if groups_results %}
+                {% for row in groups_results %}
+                  {% if row %}
+                    <li class="media">
+                      <a class="pull-left" href="../group/{{ row['groupid'] }}">
+                       <img class="media-object" src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" height="64" width="64">
+                      </a>
+                      <div class="media-body">
+                        <table>
+                          <tr>
+                            <td>
+                              <h4 class="media-heading">{{ row['groupname'] }}</h4>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <button type="submit" name="results" value="joinbutton_{{ row['groupid'] }}" class="btn btn-default">Join</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+
+              <h3> Events </h3>
+               {% if events_results %}
+                {% for row in events_results %}
+                  {% if row %}
+                    <li class="media">
+                      <a class="pull-left" href="#">
+                       <img class="media-object" src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" height="64" width="64">
+                      </a>
+                      <div class="media-body">
+                        <table>
+                          <tr>
+                            <td>
+                              <h4 class="media-heading">{{ row['eventtitle'] }}</h4>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <button type="submit" name="results" value="attendbutton_{{ row['eventid'] }}" class="btn btn-default">Attend</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

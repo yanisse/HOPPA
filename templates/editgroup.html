@@ -1,0 +1,40 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+            {% for row in group_data %}
+                  <div class="col-md-6">
+                    <h1>{{ row['group_name'] }} </h1>
+                    <form action="" method='POST' enctype=multipart/form-data>
+                      <img src="{{ url_for('static', filename=user_picture) }}" width="200" height="200"/>
+                      <p>
+                        <input type=file name=file>
+                        <input type=submit name="buttons" value="upload">
+                      </p>
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                    <form role="form" method="POST">
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Name</h3>
+                        </label>
+          <input class="form-control" id="about" name="groupname" value="{{request.form.groupname}}"placeholder="{{row['group_name']}}" type="text" > {{request.form.groupname}}
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>About</h3>
+                        </label>
+  <input class="form-control" id="about" name="groupdesc" value="{{request.form.groupdesc}}"placeholder="{{row['group_description']}}" type="text" > {{request.form.groupdesc}} 
+                      </div>
+                      <div class="form-group">
+                      <button name="buttons" value="save" type="submit" class="btn btn-default">Save</button>
+                    </form>
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

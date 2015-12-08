@@ -1,0 +1,40 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          {% if event_data %}
+            {% for row in event_data %}
+                <div class="col-md-3">
+                  <h1>{{ row['event_title'] }}</h1>
+                  <form role="form" method='POST'>
+                  <img src="#" width="200" height="200"/>
+                  <div class="btn-group">
+                    {% if not isAttending %}
+                      <button type="submit" name="eventaction" value="attendbutton" class="btn btn-default">Attend</button>
+                    {% else %}
+                      <button type="submit" name="eventaction" value="unattendbutton" class="btn btn-default">Leave</button>
+                    {% endif %}
+                      <button type="submit" name="eventaction" value="invitebutton" class="btn btn-default">Invite</button>
+                    {% if isOwner %}
+                      <button type="submit" name="eventaction" value="editbutton" class="btn btn-default">Edit</button>
+                      <button type="submit" name="eventaction" value="removebutton" class="btn btn-default">Remove</button>
+                    {% endif %}
+                  </div>
+                  <p>
+                    <a href="../eventposts/{{ row['event_id'] }}">View Posts</a>
+                  </p>
+                </div>
+                <div class="col-md-9" >
+                  <h3>Description</h3>
+                  <p> {{ row['event_description'] }} </p>
+                  <h3>Location: {{ row['event_location'] }} </h3>
+                  <h3>Date: {{ row['event_date'] }} </h3>
+                </div>
+              </form>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

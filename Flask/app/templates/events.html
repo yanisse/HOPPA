@@ -1,0 +1,43 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1 class="text-warning">My Events</h1>
+                    <a class="btn btn-default" href="addevent">+ Add Event</a>
+                    <ul class="media-list">
+                        {% for row in events %}
+                          <li class="media">
+                            <div class="media-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Event Title</th> 
+                                            <th> Date/Time </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <a class="pull-left" href="../event/{{ row['event_id'] }}"><img class="media-object" src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" height="64" width="64"></a>
+                                        </td>
+                                        <td> 
+                                        <h4 class="media-heading">{{ row['event_title']}}</h4>
+                                        </td>
+                                        <td>
+                                        <p> Date : {{ row['event_date']}} </p>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                          </li>
+                        {% endfor %}
+                    </ul>                        
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-10">
+      <h1 class="text-warning">Event Posts</h1>
+        <br>
+       <form role="form" method='POST'>
+          <div class="form-group">
+          <input class="form-control" id="post" placeholder="Need help?" type="text" name= "thepost">
+          <button name="posts" type="submit" value="postbutton" class="btn btn-primary">Post</button>
+          </div>
+        
+      <ul class="media-list">
+          {% for row in posts %}
+          <form role="form" method="POST">
+            <li class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object" src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" height="64" width="64">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">{{row['user_first']}} {{row['user_last']}}</h4> 
+                <p> 
+                  {{row['post_description']}}
+                </p>
+                {% if user_id == row['owner_id'] %}
+                  <div class="btn-group">
+                    {% if edit == False %}
+                      <button type="submit" name="posts" value="editpost_{{row['post_id']}}" class="btn btn-default">Edit</button>
+                      <button type="submit" name="posts" value="deletebutton_{{row['post_id']}}" class="btn btn-default">Delete</button>
+                    {% endif %}
+                    {% if edit == True %}
+                      <div class="btn-group">
+                        <input class="form-control" id="post" placeholder="Need help?" type="text" name= "epost" value="{{request.form.epost}}"}>
+                        <button type="submit" name="posts" value="savebutton_{{row['post_id']}}" class="btn btn-default">Save</button>
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </form>
+              </div>
+              <div>
+                <p class="pull-right"> 
+                  Date: {{row['post_datetime']}}
+                </p>
+              </div>
+              </form>
+            </li>
+          {% endfor %}
+      </ul>
+    </div>
+{% endblock %}

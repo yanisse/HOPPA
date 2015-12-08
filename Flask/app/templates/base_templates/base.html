@@ -1,0 +1,142 @@
+<html ng-app="myApp" ng-controller="MenuController as c"><head>
+
+    <!-- Meta Data -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS References -->
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+    <title>HOPPA</title>
+
+  </head>
+
+  <body>
+    <!-- Navigation Bar-->
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div class="btn-group btn-group-lg">
+                <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Notifications</a>
+                <ul class="dropdown-menu" role="menu">
+
+                
+                    <a href="#">Action</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li ng-repeat="x in options">
+            <a href= "{{ '{{x.link}}' }}" >{{x.name | angular}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search bar -->
+
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form action="search" method='POST' value="{{ url_for('search') }}" name="searchform">
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" class="form-control" placeholder="Search" name="search" value="{{ request.form.search }}">
+                  </td>
+                  <td>
+                    <button type="submit" name="searchbutton" class="btn btn-warning">search</button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+
+            <!-- Navigation bar -->
+            <ul class="nav nav-pills">
+              <li ng-repeat="x in fOptions">
+            <a href="{{ '{{x.link}}' }}">{{x.name | angular}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block content -->
+    <div class="section">
+      <div class="container">
+        {% if get_flashed_messages() %}
+          <div class="alert alert-dismissable alert-success">
+              <strong>
+                {% for message in get_flashed_messages() %}
+                  {{ message }}
+                {% endfor %}
+              </strong>
+            </div>
+          {% endif %}
+        
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+     <footer class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>Hoppa</h1>
+            <p>Learn. Share. Contribute</p>
+          </div>
+
+                  <script>
+                    var app = angular.module('myApp', []);
+                    
+                    app.controller('MenuController', function($scope)
+                    {
+                      $scope.options = [
+                      {name: "Messages", link: "message"},
+                      {name: "My Profile", link: "myprofile"},
+                      {name: "Settings", link: "settings"},
+                      {name: "Sign Out", link: "logout"}
+                      ];
+
+                      $scope.fOptions = [
+                      {name: "Newsfeed", link: "newsfeed"},
+                      {name: "My Groups", link: "groups"},
+                      {name: "My Events", link: "events"},
+                      {name: "My Friends", link: "friends"}
+                      ];
+                  });
+
+                  </script>
+
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

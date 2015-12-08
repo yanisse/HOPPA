@@ -1,0 +1,64 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+            {% for row in event_data %}
+                  <div class="col-md-6">
+                    <h1>{{ row['event_title'] }} </h1>
+                    <form action="" method='POST' enctype=multipart/form-data>
+                      <img src="{{ url_for('static', filename=user_picture) }}" width="200" height="200"/>
+                      <p>
+                        <input type=file name=file>
+                        <input type=submit name="buttons" value="upload">
+                      </p>
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                    <form role="form" method="POST">
+
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Title</h3>
+                        </label>
+          				<input class="form-control" id="about" name="eventtitle" value="{{request.form.eventtitle}}"placeholder="{{row['event_title']}}" type="text" > {{ request.form.eventtitle }}
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Description</h3>
+                        </label>
+  						<input class="form-control" id="about" name="eventdesc" value="{{request.form.eventdesc}}"placeholder="{{row['event_description']}}" type="text" > {{request.form.eventdesc}} 
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Date</h3>
+                        </label>
+  						<input class="form-control" id="about" name="eventdate" value="{{request.form.eventdate}}" type="date" > 
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Time</h3>
+                        </label>
+  						<input class="form-control" id="about" name="eventtime" value="{{request.form.eventtime}}" type="time" >
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="about">
+                          <h3>Location</h3>
+                        </label>
+  						<input class="form-control" id="about" name="eventlocation" value="{{request.form.eventlocation}}"placeholder="{{row['event_location']}}" type="text" > {{request.form.eventlocation}} 
+                      </div>
+
+                      <div class="form-group">
+                      <button name="buttons" value="save" type="submit" class="btn btn-default">Save</button>
+                    </form>
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

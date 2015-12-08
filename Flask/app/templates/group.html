@@ -1,0 +1,75 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        {% for row in group_data%}
+                        <a href="#"><img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-circle img-responsive"></a>
+                            <div class="btn-group">
+                                <form   role="form" method="post">
+                                <button type="submit" name = "gbutton" value="members" class="list-group-item">See Members</button>
+                                <button type="submit" name = "gbutton" value = "invite" class="list-group-item">Invite</button>
+                                {% if not isMember %}
+                                    <button type="submit" name="gbutton" value="join" class="list-group-item">Join</button>
+                                {% endif %}
+                                {% if isMember and not isOwner%}
+                                    <button type="submit" name="gbutton" value="leave" class="list-group-item">Leave</button>
+                                {% endif %}
+                                {% if isOwner%}
+                                    <button type="submit" name="gbutton" value="edit" class="list-group-item">Edit Group</button>
+                                    <button type="submit" name="gbutton" value="close" class="list-group-item">Close Group</button>
+                                
+                                {% endif %}
+                            </div>
+                    </div>
+                    <div class="col-md-9">
+
+                        <h1 class="text-warning">{{row['group_name']}}
+                        <br>
+                        </h1>
+                        <ul class="nav nav-pills"></ul>
+                        <h3 class="text-warning">About</h3>
+                        <p>{{row['group_description']}}</p>
+                        <hr>
+                        <h3 class="text-warning">Posts</h3>
+                        <form  role="form" method="post">
+                            <div class="form-group">
+                                <input class="form-control"  name="gpost" value="{{request.form.gpost}}" placeholder="..." type="text">
+                                <button type="submit" name="gbutton" value = "post" class="btn btn-primary">Post</button>
+                            </div>
+                        </form>
+                        <h3>Posts<br>
+                        </h3>
+                        {% for posts in group_posts %}
+                         <form  role="form" method="post">
+                        <a href="#"><img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-circle img-responsive" width="50px"></a>
+                        <p>{{posts['post_owner_name']}}</p>
+                        <p>{{posts['post_desc']}}</p>
+                         {% if user_id == posts['post_owner'] %}
+                          <div class="btn-group">
+                            {% if edit == False %}
+                            <button type="submit" name="gbutton" value="editbutton_{{posts['post_id']}}" class="btn btn-default">Edit</button>
+                            <button type="submit" name="gbutton" value="deletebutton_{{posts['post_id']}}" class="btn btn-default">Delete</button>
+                            {% endif %}
+                              {% if edit == True and posts['post_id'] == postid %} 
+                                <div class="btn-group">
+                                  <input class="form-control" id="post" placeholder="Need help?" type="text" name= "epost" value="{{request.form.epost}}"}>
+                                  <button type="submit" name="gbutton" value="savebutton_{{posts['post_id']}}" class="btn btn-default">Save</button>
+                                  <button type="submit" class="btn btn-default">Cancel</button>
+                                </div>
+                      {% endif %}
+                    
+                  </div>
+                {% endif %}
+                </form>
+                        <p>{{posts['post_date']}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+{% endblock %}

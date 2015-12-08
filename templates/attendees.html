@@ -1,0 +1,30 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+	<div class="section">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-12">
+	            <h1 class="text-center">Attendees</h1>
+	          </div>
+	        </div>
+	        {% for row in attendees %}
+		        <div class="row">
+		          <div class="col-md-2">
+		          	<a href="../myfriend/{{ row['fuser_id'] }}">
+			            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
+			            class="img-circle img-responsive">
+		        	</a>
+		          </div>
+		          <div class="col-md-4">
+		            <h3 class="text-left">{{ row['username'] }}</h3>
+		            {% if row['attending'] == 1 %}
+		            	<p> Attending. </p>
+	            	{% else %}
+	            		<p> Invited. </p>
+            		{% endif %}
+		          </div>
+		        </div>
+	        {% endfor %}
+	      </div>
+	</div>
+{% endblock %}

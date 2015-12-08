@@ -1,0 +1,45 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="text-warning" contenteditable="true">Friends&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+                        </h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Close Friends</a>
+                            </li>
+                            <li>
+                                <a href="#">Family</a>
+                            </li>
+                            <li>
+                                <a href="#">Classmates</a>
+                            </li>
+                            <li>
+                                <a href="#">Acquaintance</a>
+                            </li>
+                        </ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in friends">
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.lastName}}</td>
+                                    <td>{{x.username}}</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                        <ul class="nav nav-pills"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

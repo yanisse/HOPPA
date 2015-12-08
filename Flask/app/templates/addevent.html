@@ -1,0 +1,44 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+  {% endfor %}
+    <!-- Block content -->
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive" height="200px" width="200px">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <a class="btn btn-primary">Add Photo</a>
+            <form role="form" method='POST'>
+              <div class="form-group">
+                <label class="control-label" >Event Name *</label>
+                <input class="form-control" name="eventname" placeholder="Enter Event Name" type="text" value="{{ request.form.eventname }}">
+              </div>
+               <div class="form-group">
+                <label class="control-label">Event Date *</label>
+                <input type="date" class="form-control" id="EventDate" placeholder="Event Date *" name="eventdate" value="{{ request.form.eventdate }}">
+              </div>
+               <div class="form-group">
+                <label class="control-label">Event Time *</label>
+                <input type="time" class="form-control" id="EventTime" placeholder="Event Time *" name="eventtime" value="{{ request.form.eventtime }}">
+              </div>
+              <div class="form-group">
+                <label class="control-label">Event Location *</label>
+                <input class="form-control" placeholder="Enter Event Location"  name="eventlocation" type="text" value="{{ request.form.eventlocation }}">
+              </div>
+              <div class="form-group">
+                <label class="control-label">Description *</label>
+                <input class="form-control" placeholder="Enter Event Description"  name="eventdesc" type="text" value="{{ request.form.eventdesc }}">
+              </div>
+              <button type="submit" class="btn btn-default">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

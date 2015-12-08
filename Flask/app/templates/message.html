@@ -1,0 +1,26 @@
+{% extends "/base_templates/base.html" %}
+{% block content %}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h1 class="text-warning">People</h1>
+
+               <table class="table">
+              <tbody>
+             {% for row in friends %}
+
+                <tr>
+                <form action="" method="post">
+                  <td>{{row['username']}}<input type="submit" name="chat" value= "{{row['friend_id']}}"></td>
+                </form>
+                </tr>
+            {% endfor%}
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {% endblock %}
